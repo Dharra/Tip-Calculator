@@ -1,34 +1,30 @@
-function calculateTip(){
-  
-  var billAmount = document.getElementById("billAmount").value;
-  var serviceQuality = document.getElementById("serviceQuality").value;
-  var numPeople = document.getElementById("numPeople").value;
-  if (billAmount === "" || serviceQuality == 0) {
-    window.alert("Please input a value for each field");
-    return;
-  }
-   if (numPeople === "" || numPeople < 1){
-    window.alert("Please input a value for each field");
+var data = [];
+
+function calculateTip() {
+    var tip;
+    getData();
     
-     
-  
-     
-} else {
-  
-   document.getElementById("each").style.display = "block";
-  
-  }
-  
-  var total = (billAmount * serviceQuality) / numPeople;
-  total = Math.round(total * 100) / 100;
-  total = total.toFixed(2);
-  
-  //display tip
-  document.getElementById("total").style.display = "block";
-  document.getElementById("tip").innerHTML = total;
-  
-};
-  
-//tip calculate function
-document.getElementById("calculate").onclick = function(){ calculateTip(); 
+    tip = (data[0] * data[1]) / data[2];
+
+    if (isNaN(tip)) {
+        document.getElementById('result').textContent = '$--';
+    } else if (tip === Infinity) {
+        document.getElementById('result').textContent = '$--';
+    } else {
+        document.getElementById('result').textContent = '$' + tip.toFixed(2);
+    }
+}
+
+
+
+function getData() {
+    data[0] = document.getElementById('bill').value;
+    data[1] = document.getElementById('service').value;
+    data[2] = document.getElementById('split').value;
+
+    if (data[0] <= 0) {
+        alert('Please enter a bill amount.');
+    } else if (data[2] < 1) {
+        alert('Please enter 1 for yourself or more if you are splitting the bill.');
+    }
 }

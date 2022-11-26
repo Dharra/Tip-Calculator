@@ -1,47 +1,42 @@
+<!DOCTYPE html>
 <html>
+
 <head>
-<title>Tip Calculator</title>
-<link rel="stylesheet" href="new.css">    
+  <title>Tip Calculator App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="new.css">
 </head>
+
 <body>
-    <body>
-        <div id="container">
-            
-        <div id="calculator">
-          <h1>
-            TIP CALCULATOR
-          </h1>
-            <form>
-              <h3>Your Bill Amount</h3>
-              <label>
-                $<input type="text" id="billAmount" placeholder="Bill Amount">
-              </label>
-              <h3>Service Charge</h3>   
-            <label>                
-            <select id="serviceQuality">
-              <option id="default" value="0" selected disabled hidden>Please Choose</option>
-              <option id="poor" value=".05">Poor - 5%</option>
-              <option id="fair" value=".10">Fair - 10%</option>
-              <option id="good" value=".15">Good - 15%</option>
-              <option id="great" value=".20">Great - 20%</option>
-              <option id="excellent" value=".25">Excellent - 25%</option>
-            </select>
-              </label>
-              <h3>Number Of People</h3>
-              <label>
-            <input type="text" placeholder="Number of people" id="numPeople">
-            </label>
-                <div>
-              <button type="button" id="calculate">Calculate Tip</button>
-                </div>
-            </form>
-            <div id="total">
-              $<span id="tip">0.00</span>
-              <small id="each">each</small>
-            </div><!--total-->
+  <div class="container">
+    <form action="index.html" method="post" id="tipForm">
+      <h1>Tip Calculator</h1>
+      <div class="inputs">
+        <div class="flex">
+          <label for="bill_amount">Bill total:</label>
+          <input type="number" name="bill_amount" id="bill" min="0" placeholder="$0">
         </div>
+        <div class="flex">
+          <label for="service_quality">Service quality:</label>
+          <select name="service_quality" id="service" form="tipForm">
+                            <option value="0.05">Bad</option>
+                            <option value="0.10">Good</option>
+                            <option value="0.20">Excellent</option>
+                        </select>
         </div>
-      </body>        
-<script src="new.js"></script>    
-</body>    
+        <div class="flex">
+          <label for="split_bill">People sharing bill?</label>
+          <input type="number" name="split_bill" id="split" min="1" placeholder="0">
+        </div>
+        <div id="result">$--</div>
+      </div>
+      <div class="flex-btn">
+        <button type="button" onclick="calculateTip()" id="calc-btn">Calculate</button>
+      </div>
+    </form>
+  </div>
+  <script src="new.js"></script>
+</body>
+
 </html>
